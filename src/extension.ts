@@ -12,11 +12,17 @@ export function activate(context: vscode.ExtensionContext) {
 			token: vscode.CancellationToken,
 			context: vscode.CompletionContext
 		) {
-			const item = new vscode.CompletionItem('example');
-			item.kind = vscode.CompletionItemKind.Color;
-			item.documentation = new vscode.MarkdownString('#f00');
+			const documentation = '#f00';
 
-			return [item];
+			const item1 = new vscode.CompletionItem('example (MarkdownString)');
+			item1.kind = vscode.CompletionItemKind.Color;
+			item1.documentation = new vscode.MarkdownString(documentation);
+
+			const item2 = new vscode.CompletionItem('example (string)');
+			item2.kind = vscode.CompletionItemKind.Color;
+			item2.documentation = documentation;
+
+			return [item1, item2];
 		},
 	});
 
