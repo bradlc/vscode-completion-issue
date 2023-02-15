@@ -5,20 +5,18 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-	const provider = vscode.languages.registerCompletionItemProvider('typescriptreact', {
+	const provider = vscode.languages.registerCompletionItemProvider('html', {
 		provideCompletionItems(
 			document: vscode.TextDocument,
 			position: vscode.Position,
 			token: vscode.CancellationToken,
 			context: vscode.CompletionContext
 		) {
-			const simpleCompletion = new vscode.CompletionItem('foo-20');
-			simpleCompletion.range = new vscode.Range(new vscode.Position(0, 1), position);
+			const item = new vscode.CompletionItem('example');
+			item.kind = vscode.CompletionItemKind.Color;
+			item.documentation = new vscode.MarkdownString('#f00');
 
-			const simpleCompletion2 = new vscode.CompletionItem('foo-hello');
-			simpleCompletion2.range = new vscode.Range(new vscode.Position(0, 1), position);
-
-			return [simpleCompletion, simpleCompletion2];
+			return [item];
 		},
 	});
 
